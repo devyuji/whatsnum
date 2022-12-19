@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { toggleDarkMode, toggleLightMode } from '$lib/toggleTheme';
 	import { onMount } from 'svelte';
 	import { isDarkMode } from '../store/store';
 	let deferredPrompt: any;
@@ -11,17 +12,23 @@
 		}
 	});
 
+	const share = async () => {
+		await (Navigator as any).share({
+			title: 'WhatsNum',
+			text: 'Send message without saving number on WhatsApp',
+			url: 'https://whatsnum.netlify.app'
+		});
+	};
+
 	const toggleTheme = () => {
 		const theme = localStorage.theme;
 
 		if (theme !== 'dark') {
 			localStorage.theme = 'dark';
-			document.documentElement.classList.add('dark');
-			isDarkMode.update(() => true);
+			toggleDarkMode();
 		} else {
 			localStorage.theme = 'light';
-			document.documentElement.classList.remove('dark');
-			isDarkMode.update(() => false);
+			toggleLightMode();
 		}
 	};
 
@@ -46,18 +53,84 @@
 			{#if showInstallOption}
 				<li>
 					<button
-						class="hover:bg-green-100 p-1 rounded-lg dark:hover:text-black text-lg"
+						class="hover:bg-green-100 p-1 rounded-lg dark:hover:text-black text-lg flex gap-2 items-center"
 						type="button"
-						on:click={installApp}>Install app</button
+						aria-label="install app"
+						on:click={installApp}
 					>
+						<span>
+							<svg
+								viewBox="0 0 24 24"
+								width="24"
+								height="24"
+								stroke="currentColor"
+								stroke-width="2"
+								fill="none"
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" /><polyline
+									points="7 10 12 15 17 10"
+								/><line x1="12" y1="15" x2="12" y2="3" /></svg
+							>
+						</span>
+						<span class="hidden sm:block">Install app</span>
+					</button>
 				</li>
 			{/if}
 
 			<li>
 				<a
-					class="hover:bg-green-100 p-1 rounded-lg dark:hover:text-black text-lg"
-					href="/how-to-use">how-to-use</a
+					class="hover:bg-green-100 p-1 rounded-lg dark:hover:text-black text-lg flex items-center gap-2"
+					href="/how-to-use"
 				>
+					<span>
+						<svg
+							viewBox="0 0 24 24"
+							width="24"
+							height="24"
+							stroke="currentColor"
+							stroke-width="2"
+							fill="none"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							class="css-i6dzq1"
+							><circle cx="12" cy="12" r="10" /><path
+								d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"
+							/><line x1="12" y1="17" x2="12.01" y2="17" /></svg
+						>
+					</span>
+					<span class="">how-to-use</span>
+				</a>
+			</li>
+
+			<li>
+				<button
+					on:click={share}
+					aria-label="share"
+					class="hover:bg-green-100 p-1 rounded-lg dark:hover:text-black"
+				>
+					<svg
+						viewBox="0 0 24 24"
+						width="24"
+						height="24"
+						stroke="currentColor"
+						stroke-width="2"
+						fill="none"
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						class="css-i6dzq1"
+						><circle cx="18" cy="5" r="3" /><circle cx="6" cy="12" r="3" /><circle
+							cx="18"
+							cy="19"
+							r="3"
+						/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49" /><line
+							x1="15.41"
+							y1="6.51"
+							x2="8.59"
+							y2="10.49"
+						/></svg
+					>
+				</button>
 			</li>
 			<li>
 				<button

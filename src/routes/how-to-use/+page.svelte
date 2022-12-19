@@ -3,7 +3,7 @@
 </script>
 
 <svelte:head>
-	<title>How to send message without saving number on whatsapp - whatsnum</title>
+	<title>How to send message without saving number on Whatsapp - whatsnum</title>
 </svelte:head>
 
 <main class="grid place-items-center p-4">
@@ -31,7 +31,7 @@
 
 		<div class="mt-8 dark:text-white">
 			<h1 class="md:text-4xl text-center font-semibold text-3xl">
-				How to send message without saving number on whatsapp.
+				How to send message without saving number on WhatsApp.
 			</h1>
 
 			<ul class="my-6 flex flex-col gap-6 text-lg">

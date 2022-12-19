@@ -5,9 +5,9 @@
 	"display": "standalone",
 	"scope": "/",
 	"start_url": "/",
-	"name": "whatsnum",
-	"short_name": "whatsnum",
-	"description": "Send message without saving number on whatsapp",
+	"name": "WhatsNum",
+	"short_name": "WhatsNum",
+	"description": "Send message without saving number on WhatsApp",
 	"icons": [
 		{
 			"src": "/icons/icon-48.png",

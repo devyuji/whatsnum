@@ -5,13 +5,13 @@
 	import Footer from '../components/footer.svelte';
 	import { browser } from '$app/environment';
 	import { dialCode, isDarkMode } from '../store/store';
+	import { toggleDarkMode } from '$lib/toggleTheme';
 
 	let loading = true;
 
 	if (browser) {
 		if (localStorage.theme === 'dark') {
-			isDarkMode.update(() => true);
-			document.documentElement.classList.add('dark');
+			toggleDarkMode();
 		}
 
 		const localDialCode = localStorage.dialcode;

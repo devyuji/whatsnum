@@ -24,13 +24,13 @@
 </script>
 
 <svelte:head>
-	<title>Send whatsapp message without saving number - whatsnum</title>
+	<title>Send WhatsApp message without saving number - WhatsNum</title>
 </svelte:head>
 
 <main class="flex items-center flex-col gap-4 p-4 mt-20 mb-8">
 	<div class="lg:w-[50rem] md:w-5/6 w-full">
 		<h1 class="text-3xl font-semibold mb-6 dark:text-white">
-			Send message without saving number on Whatsapp
+			Send message without saving number on WhatsApp
 		</h1>
 		<p class="mb-6 dark:text-white">
 			You may send a message without storing it by simply inputting the number below.
