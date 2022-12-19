@@ -1,16 +1,9 @@
 <script lang="ts">
 	import { toggleDarkMode, toggleLightMode } from '$lib/toggleTheme';
-	import { onMount } from 'svelte';
 	import { isDarkMode } from '../store/store';
+
 	let deferredPrompt: any;
 	let showInstallOption = false;
-
-	onMount(() => {
-		const isStandalone = window.matchMedia('(display-mode: standalone)').matches;
-		if (!isStandalone) {
-			showInstallOption = true;
-		}
-	});
 
 	const share = async () => {
 		await navigator.share({
@@ -42,6 +35,8 @@
 		e.preventDefault();
 
 		deferredPrompt = e;
+
+		showInstallOption = true;
 	};
 </script>
 
