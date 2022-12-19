@@ -1,28 +1,112 @@
 <script lang="ts">
-	function toggleTheme() {
+	import { onMount } from 'svelte';
+	import { isDarkMode } from '../store/store';
+	let deferredPrompt: any;
+	let showInstallOption = false;
+
+	onMount(() => {
+		const isStandalone = window.matchMedia('(display-mode: standalone)').matches;
+		if (!isStandalone) {
+			showInstallOption = true;
+		}
+	});
+
+	const toggleTheme = () => {
 		const theme = localStorage.theme;
 
 		if (theme !== 'dark') {
 			localStorage.theme = 'dark';
 			document.documentElement.classList.add('dark');
+			isDarkMode.update(() => true);
 		} else {
 			localStorage.theme = 'light';
 			document.documentElement.classList.remove('dark');
+			isDarkMode.update(() => false);
 		}
-	}
+	};
+
+	const installApp = () => {
+		if (deferredPrompt) {
+			deferredPrompt.prompt();
+		}
+	};
+
+	const beforeInstallPrompt = (e: any) => {
+		e.preventDefault();
+
+		deferredPrompt = e;
+	};
 </script>
 
-<header class="bg-green-50 dark:bg-black p-4 grid place-items-center">
-	<nav class="flex justify-end lg:w-[40rem] md:w-5/6 w-full">
-		<ul class="flex gap-4 dark:text-white">
+<svelte:window on:beforeinstallprompt={beforeInstallPrompt} />
+
+<header class="bg-green-50 dark:bg-gray-900 p-4 grid place-items-center">
+	<nav class="flex justify-end lg:w-[50rem] md:w-5/6 w-full">
+		<ul class="flex items-center gap-4 dark:text-white">
+			{#if showInstallOption}
+				<li>
+					<button
+						class="hover:bg-green-100 p-1 rounded-lg dark:hover:text-black text-lg"
+						type="button"
+						on:click={installApp}>Install app</button
+					>
+				</li>
+			{/if}
+
 			<li>
-				<button type="button">Install app</button>
+				<a
+					class="hover:bg-green-100 p-1 rounded-lg dark:hover:text-black text-lg"
+					href="/how-to-use">how-to-use</a
+				>
 			</li>
 			<li>
-				<a href="/how-to-use">how-to-use</a>
-			</li>
-			<li>
-				<button type="button" aria-label="theme toggle" on:click={toggleTheme}>theme</button>
+				<button
+					class="hover:bg-green-100 p-1 rounded-lg dark:hover:text-black"
+					type="button"
+					aria-label="theme toggle"
+					on:click={toggleTheme}
+				>
+					{#if $isDarkMode}
+						<svg
+							viewBox="0 0 24 24"
+							width="24"
+							height="24"
+							stroke="currentColor"
+							stroke-width="2"
+							fill="none"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							><circle cx="12" cy="12" r="5" /><line x1="12" y1="1" x2="12" y2="3" /><line
+								x1="12"
+								y1="21"
+								x2="12"
+								y2="23"
+							/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64" /><line
+								x1="18.36"
+								y1="18.36"
+								x2="19.78"
+								y2="19.78"
+							/><line x1="1" y1="12" x2="3" y2="12" /><line x1="21" y1="12" x2="23" y2="12" /><line
+								x1="4.22"
+								y1="19.78"
+								x2="5.64"
+								y2="18.36"
+							/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22" /></svg
+						>
+					{:else}
+						<svg
+							viewBox="0 0 24 24"
+							width="24"
+							height="24"
+							stroke="currentColor"
+							stroke-width="2"
+							fill="none"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" /></svg
+						>
+					{/if}
+				</button>
 			</li>
 		</ul>
 	</nav>

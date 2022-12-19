@@ -1,6 +1,15 @@
 <script lang="ts">
 	import { modal } from '../../store/store';
 	import { fade } from 'svelte/transition';
+	import { onDestroy, onMount } from 'svelte';
+
+	onMount(() => {
+		document.body.style.overflow = 'hidden';
+	});
+
+	onDestroy(() => {
+		document.body.style.overflow = 'auto';
+	});
 
 	const closeModal = () => {
 		modal.update((v) => false);

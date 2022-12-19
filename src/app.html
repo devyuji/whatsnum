@@ -2,14 +2,27 @@
 <html lang="en" class="">
 	<head>
 		<meta charset="utf-8" />
-		<link rel="icon" href="%sveltekit.assets%/Group 12.png" />
+		<link rel="icon" href="%sveltekit.assets%/favicon.png" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<link rel="manifest" crossorigin="use-credentials" href="%sveltekit.assets%/manifest.json" />
+		<link
+			rel="manifest"
+			crossorigin="use-credentials"
+			href="%sveltekit.assets%/manifest.webmanifest"
+		/>
 		<meta name="description" content="Send message without saving number on Whatsapp" />
-		<title>whatsnum - send whatsapp message without saving number.</title>
+		<title>Send whatsapp message without saving number - whatsnum</title>
+
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+			rel="stylesheet"
+		/>
 		%sveltekit.head%
 	</head>
-	<body class="bg-green-50 dark:bg-black h-screen w-full">
-		<div>%sveltekit.body%</div>
+	<body>
+		<div class="bg-green-50 dark:bg-gray-900 min-h-screen w-full flex flex-col">
+			%sveltekit.body%
+		</div>
 	</body>
 </html>

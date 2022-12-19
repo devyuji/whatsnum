@@ -8,6 +8,10 @@
 		-webkit-appearance: none;
 		margin: 0;
 	}
+
+	body {
+		font-family: 'Inter', sans-serif;
+	}
 }
 
 @layer utilities {

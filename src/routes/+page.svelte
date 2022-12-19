@@ -9,7 +9,7 @@
 		modal.update(() => true);
 	};
 
-	function submit() {
+	const submit = () => {
 		if (value.length === 0) return;
 
 		if ($dialCode.length === 0) {
@@ -20,12 +20,16 @@
 		const url = `https://wa.me/+91${value}`;
 		window.open(url, '_blank');
 		errorMessage = '';
-	}
+	};
 </script>
 
-<main class="flex items-center flex-col gap-4 p-4 mt-20">
-	<div class="lg:w-[40rem] md:w-5/6 w-full">
-		<h1 class="text-3xl font-medium mb-6 dark:text-white">
+<svelte:head>
+	<title>Send whatsapp message without saving number - whatsnum</title>
+</svelte:head>
+
+<main class="flex items-center flex-col gap-4 p-4 mt-20 mb-8">
+	<div class="lg:w-[50rem] md:w-5/6 w-full">
+		<h1 class="text-3xl font-semibold mb-6 dark:text-white">
 			Send message without saving number on Whatsapp
 		</h1>
 		<p class="mb-6 dark:text-white">
@@ -33,13 +37,15 @@
 		</p>
 
 		<form on:submit|preventDefault={submit} class="w-full">
-			<div class="flex gap-4">
+			<div class="flex gap-4 items-center">
 				<button
 					type="button"
-					class="bg-green-100  border-none p-4 rounded-lg flex items-center gap-2"
+					aria-label="dialog dial code list"
+					class="bg-green-100 border-none p-4 rounded-lg flex items-center gap-2"
 					on:click={openModal}
 				>
 					<svg
+						class="h-full w-full"
 						viewBox="0 0 24 24"
 						width="24"
 						height="24"

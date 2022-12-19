@@ -6,12 +6,13 @@
 
 	const updateCode = () => {
 		dialCode.update(() => data.dial_code);
+		localStorage.dialcode = data.dial_code;
 		modal.update(() => false);
 	};
 </script>
 
 <button
-	class="hover:bg-green-100 focus:bg-green-100 outline-none w-full flex gap-2 p-4 border-b-2"
+	class="hover:bg-green-100 dark:text-white dark:hover:bg-gray-700 dark:focus:bg-gray-700 focus:bg-green-100 dark:border-gray-800 outline-none w-full flex gap-2 p-4 border-b-2"
 	on:click={updateCode}
 >
 	<span>{data.dial_code}</span>
