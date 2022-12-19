@@ -13,7 +13,7 @@
 	});
 
 	const share = async () => {
-		await (Navigator as any).share({
+		await navigator.share({
 			title: 'WhatsNum',
 			text: 'Send message without saving number on WhatsApp',
 			url: 'https://whatsnum.netlify.app'

@@ -7,7 +7,7 @@
 	</p>
 	<p class="mt-2 text-sm">
 		View source code on <a
-			href="httos://github.com/devyuji/whatsnum"
+			href="https://github.com/devyuji/whatsnum"
 			class="hover:border-b-2 dark:border-white border-black"
 		>
 			Github
