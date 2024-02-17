@@ -1,30 +1,34 @@
 <!DOCTYPE html>
 <html lang="en" class="">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" href="%sveltekit.assets%/favicon.png" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<meta name="description" content="Send message without saving number on Whatsapp" />
-		<title>Send whatsapp message without saving number - WhatsNum</title>
 
-		<meta name="theme-color" content="#f0fdf4" />
-		<link
-			rel="manifest"
-			crossorigin="use-credentials"
-			href="%sveltekit.assets%/manifest.webmanifest"
-		/>
+<head>
+	<meta charset="utf-8" />
+	<link rel="icon" href="%sveltekit.assets%/favicon.png" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="description" content="Send message without saving number on Whatsapp" />
+	<title>Send whatsapp message without saving number - WhatsNum</title>
 
-		<link rel="preconnect" href="https://fonts.googleapis.com" />
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-		<link
-			href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
-			rel="stylesheet"
-		/>
-		%sveltekit.head%
-	</head>
-	<body>
-		<div class="bg-green-50 dark:bg-gray-900 min-h-screen w-full flex flex-col">
-			%sveltekit.body%
-		</div>
-	</body>
+	<meta name="theme-color" content="#f0fdf4" />
+	<link rel="manifest" crossorigin="use-credentials" href="%sveltekit.assets%/manifest.webmanifest" />
+
+	<link rel="preconnect" href="https://fonts.googleapis.com" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+	<script>
+		const mode = localStorage.theme;
+		if (mode === "dark") {
+			document.documentElement.classList.add("dark");
+		}
+	</script>
+
+	%sveltekit.head%
+</head>
+
+<body>
+	<div class="bg-green-50 dark:bg-gray-900 min-h-screen w-full flex flex-col">
+		%sveltekit.body%
+	</div>
+</body>
+
 </html>

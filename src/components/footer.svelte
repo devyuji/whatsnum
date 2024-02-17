@@ -1,8 +1,8 @@
 <footer class="w-full p-8 text-center bg-green-100 dark:text-white dark:bg-green-700 mt-auto">
 	<p>
-		Made with ❤️ by <a
-			href="https://instagram.com/devyuji"
-			class="hover:border-b-2 border-black dark:border-white">yuji</a
+		Crafted by <a
+			href="https://rragahvan.com"
+			class="hover:border-b-2 border-black dark:border-white">r-r</a
 		>
 	</p>
 	<p class="mt-2 text-sm">
