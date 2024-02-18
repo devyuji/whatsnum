@@ -1,7 +1,7 @@
 <footer class="w-full p-8 text-center bg-green-100 dark:text-white dark:bg-green-700 mt-auto">
 	<p>
 		Crafted by <a
-			href="https://rragahvan.com"
+			href="https://rraghavan.com"
 			class="hover:border-b-2 border-black dark:border-white">r-r</a
 		>
 	</p>
