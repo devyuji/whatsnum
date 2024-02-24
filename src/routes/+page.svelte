@@ -5,22 +5,22 @@
 	let value = '';
 	let errorMessage = '';
 
-	const openModal = () => {
+	function openModal() {
 		modal.update(() => true);
-	};
+	}
 
-	const submit = () => {
+	function submit() {
 		if (value.length === 0) return;
 
 		if ($dialCode.length === 0) {
-			errorMessage = 'select country dial code';
+			errorMessage = 'Select country dial code';
 			return;
 		}
 
-		const url = `https://wa.me/+91${value}`;
+		const url = `https://wa.me/${$dialCode}${value}`;
 		window.open(url, '_blank');
 		errorMessage = '';
-	};
+	}
 </script>
 
 <svelte:head>
