@@ -1,19 +1,25 @@
 <script lang="ts">
-	import type { filterDataProps } from '$lib/types';
-	import { dialCode, modal } from '../store/store';
+	import type { filterDataProps } from '#lib/types.js';
+	import { s } from '#lib/state/index.svelte.ts';
 
-	export let data: filterDataProps;
+	interface Props {
+		data: filterDataProps;
+	}
+
+	let { data }: Props = $props();
 
 	const updateCode = () => {
-		dialCode.update(() => data.dial_code);
+		s.update({ dialCode: data.dial_code });
+
 		localStorage.dialcode = data.dial_code;
-		modal.update(() => false);
+
+		s.update({ modal: false });
 	};
 </script>
 
 <button
 	class="hover:bg-green-100 dark:text-white dark:hover:bg-gray-700 dark:focus:bg-gray-700 focus:bg-green-100 dark:border-gray-800 outline-none w-full flex gap-2 p-4 border-b-2"
-	on:click={updateCode}
+	onclick={updateCode}
 >
 	<span>{data.dial_code}</span>
 	<span class="text-left">{data.name}</span>

@@ -1,19 +1,21 @@
 <script lang="ts">
 	import Backdrop from './backdrop.svelte';
 	import { scale } from 'svelte/transition';
-	import { modal } from '../../store/store';
-	import countryCode from '$lib/countryCode.json';
+	import { s } from '#lib/state/index.svelte.ts';
+	import countryCode from '#lib/countryCode.json';
 	import NumberList from '../numberList.svelte';
-	import type { filterDataProps } from '$lib/types';
+	import type { filterDataProps } from '#lib/types.js';
 
-	let filterData: filterDataProps[] = [];
-	let value = '';
+	let filterData: filterDataProps[] = $state([]);
+	let value = $state('');
 
 	const closeModal = () => {
-		modal.update(() => false);
+		s.update({ modal: false });
 	};
 
-	$: filterData = countryCode.filter((v) => v.name.toLowerCase().match(value.toLowerCase()));
+	$effect(() => {
+		filterData = countryCode.filter((v) => v.name.toLowerCase().match(value.toLowerCase()));
+	});
 
 	function focus(e: HTMLElement) {
 		e.focus();
@@ -21,11 +23,11 @@
 </script>
 
 <Backdrop>
-	<!-- svelte-ignore a11y-no-static-element-interactions -->
-	<!-- svelte-ignore a11y-click-events-have-key-events -->
+	<!-- svelte-ignore a11y_click_events_have_key_events -->
+	<!-- svelte-ignore a11y_no_static_element_interactions -->
 	<div
 		transition:scale
-		on:click|stopPropagation
+		onclick={(e) => e.stopPropagation()}
 		class="flex flex-col bg-green-50 dark:bg-gray-900 h-5/6 lg:w-96 w-11/12 rounded-lg overflow-hidden"
 	>
 		<div>
@@ -33,7 +35,7 @@
 				<button
 					type="button"
 					aria-label="close"
-					on:click={closeModal}
+					onclick={closeModal}
 					class="bg-green-100 dark:bg-green-900 p-2 rounded-lg text-green-800 dark:text-green-400 font-bold text-xs"
 				>
 					ESC
@@ -41,7 +43,7 @@
 			</div>
 
 			<form
-				on:submit|preventDefault
+				onsubmit={(e) => e.preventDefault()}
 				class="flex items-center p-4 gap-4 border-b-2 dark:border-gray-800"
 			>
 				<svg

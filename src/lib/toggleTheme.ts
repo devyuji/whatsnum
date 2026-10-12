@@ -1,7 +1,8 @@
-import { isDarkMode } from '../store/store';
+import { s } from './state/index.svelte';
 
 export function toggleDarkMode() {
-	isDarkMode.update(() => true);
+	s.update({ isDarkMode: true });
+
 	document.documentElement.classList.add('dark');
 	const metaTheme = document.querySelector('meta[name="theme-color"]');
 	if (metaTheme) {
@@ -10,7 +11,7 @@ export function toggleDarkMode() {
 }
 
 export function toggleLightMode() {
-	isDarkMode.update(() => false);
+	s.update({ isDarkMode: false });
 	document.documentElement.classList.remove('dark');
 	const metaTheme = document.querySelector('meta[name="theme-color"]');
 	if (metaTheme) {

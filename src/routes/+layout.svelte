@@ -1,16 +1,18 @@
 <script>
 	import '../app.css';
 
-	import Navbar from '../components/navbar.svelte';
-	import Footer from '../components/footer.svelte';
-	import { dialCode } from '../store/store';
+	import Navbar from '#lib/components/navbar.svelte';
+	import Footer from '#lib/components/footer.svelte';
+	import { s } from '#lib/state/index.svelte.ts';
 	import { onMount } from 'svelte';
+
+	let { children } = $props();
 
 	onMount(() => {
 		const localDialCode = localStorage.dialcode;
 
 		if (localDialCode) {
-			dialCode.update(() => localDialCode);
+			s.update({ dialCode: localDialCode });
 		}
 	});
 </script>
@@ -20,5 +22,5 @@
 </svelte:head>
 
 <Navbar />
-<slot />
+{@render children()}
 <Footer />

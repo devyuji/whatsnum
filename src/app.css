@@ -1,6 +1,6 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+
+@custom-variant dark (&:where(.dark, .dark *));
 
 @layer base {
 	input[type='number']::-webkit-inner-spin-button,
@@ -11,6 +11,10 @@
 
 	body {
 		font-family: 'Inter', sans-serif;
+	}
+
+	button {
+		cursor: pointer;
 	}
 }
 

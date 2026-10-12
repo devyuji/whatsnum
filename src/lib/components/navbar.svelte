@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { toggleDarkMode, toggleLightMode } from '$lib/toggleTheme';
-	import { isDarkMode } from '../store/store';
+	import { toggleDarkMode, toggleLightMode } from '#lib/toggleTheme.js';
+	import { s } from '#lib/state/index.svelte.ts';
 
 	let deferredPrompt: any;
 	let showInstallOption = false;
@@ -40,10 +40,10 @@
 	};
 </script>
 
-<svelte:window on:beforeinstallprompt={beforeInstallPrompt} />
+<svelte:window onbeforeinstallprompt={beforeInstallPrompt} />
 
 <header class="bg-green-50 dark:bg-gray-900 p-4 grid place-items-center">
-	<nav class="flex justify-end lg:w-[50rem] md:w-5/6 w-full">
+	<nav class="flex justify-end lg:w-200 md:w-5/6 w-full">
 		<ul class="flex items-center gap-4 dark:text-white">
 			{#if showInstallOption}
 				<li>
@@ -132,7 +132,7 @@
 					aria-label="theme toggle"
 					on:click={toggleTheme}
 				>
-					{#if $isDarkMode}
+					{#if s.values.isDarkMode}
 						<svg
 							viewBox="0 0 24 24"
 							width="20"

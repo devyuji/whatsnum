@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { isDarkMode } from '../../store/store';
+	import { s } from '#lib/state/index.svelte.ts';
 </script>
 
 <svelte:head>
@@ -7,7 +7,7 @@
 </svelte:head>
 
 <main class="grid place-items-center p-4">
-	<div class="lg:w-[50rem] md:w-5/6 w-full">
+	<div class="lg:w-200 md:w-5/6 w-full">
 		<div>
 			<a
 				href="/"
@@ -57,7 +57,7 @@
 				</li>
 
 				<li>
-					{#if $isDarkMode}
+					{#if s.values.isDarkMode}
 						<img src="/images/indicate-home-dark.jpg" alt="" />
 					{:else}
 						<img src="/images/indicate-home.jpg" alt="" />
@@ -75,7 +75,7 @@
 				</li>
 
 				<li>
-					{#if $isDarkMode}
+					{#if s.values.isDarkMode}
 						<img src="/images/cover-dark.jpg" alt="" />
 					{:else}
 						<img src="/images/cover.jpg" alt="" />
