@@ -26,6 +26,15 @@
 		const personalScheme = `whatsapp://send?phone=${phoneNumber}`;
 		const defaultScheme = `https://wa.me/${phoneNumber}`;
 
+		const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+			navigator.userAgent
+		);
+
+		if (!isMobile) {
+			window.location.href = defaultScheme;
+			return;
+		}
+
 		let url = '';
 
 		switch (type) {
